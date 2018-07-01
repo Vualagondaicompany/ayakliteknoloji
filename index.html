@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>NewsApp</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">Documentation by &ldquo;weblogtemplates&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;NewsApp v1&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: July 22th, 2015<br>
+					By: weblogtemplates<br>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my script. If you have any questions that are beyond the scope of this help file, please feel free to contact me via <a target="_blank" href="http://codecanyon.net/user/weblogtemplates">codecanyon contact form</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ul class="">
+      
+      	<li><a href="#bt0">About</a></li>
+         <li><a href="#at0">News Script Installation</a></li>
+         <li><a href="#at1">News Script admin panel</a></li>
+         <li><a href="#at2">Apis</a></li>
+        	<li><a href="#bt1">Get started Cordova</a></li>
+         <li><a href="#bt2">Files</a></li>
+         <li><a href="#bt22">Cordova plugins</a></li>
+			<li><a href="#bt3">Change settings</a></li>
+         <li><a href="#bt3000">Change Color</a></li>
+         <li><a href="#bt32">Admob</a></li>
+			<li><a href="#bt4">Build app</a></li>
+         <li><a href="#bt40">Important Files</a></li>
+         <li><a href="#bt5">Important Links</a></li>
+		</ul>
+		
+		<hr>
+      <h3 id="bt0"><strong>About</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	Develop a tinynews app using cordova/phonegap. It is built using angularjs,Ionic framework and php(Yii 1.1)
+      </p>
+      <p>
+      	In this tutorial we will help you to install news php script and creating an app using cordova/phonegap.
+      </p>
+      <h3 id="at0"><strong>News Script Installation</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	Before installation create and import demo database using this <a href="mysql.html">simple turorial</a>.
+      </p>
+      <h3>Change config settings</h3>
+      <p>
+      	From downloaded files open this file inside script folder. 'protected/config/config.php'
+      </p>
+      <img class="border-img" src="assets/images/script1.png" width="780px" alt="Settings" />
+      <p>
+      	Config file may look like as shown above. Change database host, database name, database username and database password that you created in mysql installation wizard.
+      </p>
+      <p>
+      	Next open file 'protected/config/params.php'
+      </p>
+      <img class="border-img" src="assets/images/script2.png" width="780px" alt="Settings" />
+      <p>
+      	site_url is the domain name or folder where script is installed. It should be http://domain.com or http://domain.com/folder . Don't add trailing slash here 
+      </p>
+      <p>
+      	static_path should be either http://domain.com/static/. So it should be site_url+'/static/'.
+      </p>
+      <p>
+      	Other variables like site_name, site_title, site_description can change according to youur needs.
+         <br>
+         API_KEY will be explained in the push notification section.
+      </p>
+      <h3>Installation</h3>
+      <p>After making necessary changes upload all files inscript folder to server and http://domain.com/site/install in a browser and create first admin as shown below.</p>
+      <img class="border-img" src="assets/images/install-php.png" width="780px" alt="Settings" />
+      <p>
+      	If installation completes successfully you can see login page of admin with success.
+      </p>
+      <h3 id="at1"><strong>News Script admin panel</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	Login to admin using this url http://domain.com/newadmin/default/login .
+      </p>
+      <img class="border-img" src="assets/images/login.png" width="780px" alt="Settings" />
+      <p>
+      	After login to admin panel take add category. Add 100pxx100px iamges to categories for best look and feel.
+      </p>
+      <img class="border-img" src="assets/images/cat.png" width="780px" alt="Settings" />
+      <p>
+      	After login to admin panel take new post from left side to add a new news/post.
+      </p>
+      <img class="border-img" src="assets/images/post.png" width="780px" alt="Settings" />
+      <p>
+      	Creating user/admin
+      </p>
+      <img class="border-img" src="assets/images/user.png" width="780px" alt="Settings" />
+      
+      <h3 id="at2"><strong>Apis</strong> - <a href="#toc">top</a></h3>
+      <h3>News api</h3>
+      <p>
+      	Url -- http://domain.com/api/news/posts/
+         <br>
+         Parameters : offset and category(Optional)
+         <br>
+         Offset should be 0,1,2 etc. 0 means it will load first 10 posts, 1 means 11 to 20 posts.
+         <br>
+         If you add a category id along with above url it will load posts in that particular category.
+      </p>
+      <h3>Search api</h3>
+      <p>
+     	 	Url -- http://domain.com/api/news/search/
+         <br>
+         Parameters : offset and query(Optional)
+         <br>
+         Offset should be 0,1,2 etc. 0 means it will load first 10 posts, 1 means 11 to 20 posts.
+         <br>
+         If you add a query paarameter it will fetch posts with search condition.
+      </p>
+      <h3>Categories api</h3>
+      <p>
+     	 	Url -- http://domain.com/api/news/category/
+         <br>
+         Lists all categories
+      </p>
+      <h3>Post</h3>
+      <p>
+     	 	Url -- http://domain.com/api/news/post/
+         <br>
+         paramets : id - post id
+         <br>
+      </p>
+      <h3 id="bt1"><strong>Get started Cordova</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	Installing android SDK is the first step in creating an android app using cordova/phonegap. 
+         You can easily install sdk by downloading it from <a href="http://developer.android.com/sdk/index.html#Other">here</a>. After finishing it we need to install node.js, npm and cordova/phonegap.
+      </p>
+      <p>
+      	Here it is tutorial link for installation and set up.
+        <br/>
+        <a target="_blank" href="https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html">Follow this tutorial to install cordova using The Command-Line Interface </a>
+      	<br/>
+         Above tutorial will definitly help you to install node.js and npm utility which will ease cordova installation. 
+         <br/>
+         If you are using a windows machine "<b>C:\>npm install -g cordova</b>" will install cordova in your machine.
+         <br/>
+         "<b>cordova create hello com.example.hello HelloWorld</b>" It will create a folder "hello" inside your current directory and will create an app with package "com.example.hello". 
+      	<br/>
+         After installation just follow above tutorial to add required platforms to your android app.
+         <br/>
+         For most of cordova based tutorial for installation you can follow this <a href="https://cordova.apache.org/docs/en/edge/index.html">good documentation</a> from cordova website. 
+      </p>
+      <p>
+      	Commands for creating app - You should run this using command line.
+      </p>
+      <ul>
+      	<li>
+         	cordova create cordovablogger com.cordovablogger.app CordovaBlogger -- Will create a cordova based project
+         </li>
+         <li>
+         	cordova platform add android -- Will add support for android
+         </li>
+         <li>
+         	cordova build android -- Build android app
+         </li>
+         <li>
+         	cordova run android -- Run android app in your device
+         </li>
+      </ul>
+      <h3 id="bt2"><strong>Files</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	Downloaded zip files contains app and documentation folder. In app folder there is another folder named "www". We need to replace it with the generated "www" folder inside the app that you created using cordova.
+      </p>
+      <h3 id="bt22"><strong>Cordova plugins</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	These are the plugins that required for the complete working of this app.
+      </p>
+      <ul>
+      	<li>cordova plugin add de.appplant.cordova.plugin.email-composer</li>
+			<li>cordova plugin add cordova-plugin-whitelist (Add if it is not added already when installing cordova)</li>
+			<li>cordova plugin add nl.x-services.plugins.socialsharing</li>
+         <li>cordova plugin add cordova-plugin-admobpro</li>
+         <li>cordova plugin add cordova-plugin-device</li>
+         <li>cordova plugin add cordova-plugin-inappbrowser</li>
+         <li>cordova plugin add https://github.com/gitawego/cordova-screenshot.git</li>
+         <li>cordova plugin add https://github.com/phonegap-build/PushPlugin.git</li>
+         <li>cordova plugin add nl.x-services.plugins.toast</li>
+         <li>cordova plugin add cordova-plugin-splashscreen</li>
+      </ul>
+      <p>
+      	After creating app and replacing "www" files add above mentioned plugins. You need to add these plugins one by one at a time.
+      </p>
+      <h3 id="bt3"><strong>Change settings</strong> - <a href="#toc">top</a></h3>
+		 <p>Open the app folder inside the downloaded files. And take "<b>/js/app.js</b>" in a text editor and search for this code.</p>
+      <img class="border-img" src="assets/images/settings.png" width="780px" alt="Settings" />
+      <p>
+      	Change weburl of api. http://domain.com/api/ where http://domain.com/ where news php script installed and add simple 'api/' along with it.
+         <br>
+         Change App Name, url and error message where there is no posts to load.
+      </p>
+      <p>
+      	You can also change "to email", email subject in contact form.
+      </p>
+      <h3><strong>Push notification settings</strong></h3>
+      <p>
+      	For proper working of android app push notification, we need create an app in <a href="https://console.developers.google.com/project">Google Console</a> and get project number from here.
+         <br/>
+         Google Console->Select App->overview->Project Number: at top of page
+      </p>
+      <p>
+      	Along with adding project number we also need to add API_KEY in settings section of news script.
+         <br>
+         In above created project enable gcm as shown below.
+      </p>
+      <img class="border-img" src="assets/images/gcm1.png" width="780px" alt="Settings" />
+      <img class="border-img" src="assets/images/gcm2.png" width="780px" alt="Settings" />
+      <p>
+      	Create a new server key and add it to script settings section.
+      </p>
+      <p>
+      	We can manually send push notification to users those who installed app.
+      </p>
+      <img class="border-img" src="assets/images/push.png" width="780px" alt="Settings" />
+      <h3 id="bt3000"><strong>Change Color</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	Easily change app header color/buttons by changing a single constant in config section. Change "AppColor" in "Color" config section from available options. "light, stable, positive, calm, balanced, energized, assertive, royal, dark" that will you to quickly change entire app color with a single click.
+      </p>
+      <h3 id="bt32"><strong>Admob</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	First step to show admob ads in your app is to add this plugin 'cordova-plugin-admobpro' , if you already added above plugins don't need to add it again.
+         <br>
+         In 'js/app.js' page change admob interstitial and adbanner id's with your own admob codes.
+         <br>
+         And you can find example ways to show ads in a page from "js/controllers.js" controller "AdmobCtrl".
+         <br>
+         <pre>
+$scope.showInterstitial = function(){
+   if(AdMob) AdMob.showInterstitial();
+}
+document.addEventListener("deviceready", function(){
+   if(AdMob) {
+      // show admob banner
+      if(ConfigAdmob.banner) {
+         AdMob.createBanner( {
+            adId: ConfigAdmob.banner, 
+            position: AdMob.AD_POSITION.BOTTOM_CENTER, 
+            autoShow: true 
+         } );
+      }
+      // preparing admob interstitial ad
+      if(ConfigAdmob.interstitial) {
+         AdMob.prepareInterstitial( {
+            adId:ConfigAdmob.interstitial, 
+            autoShow:false
+         } );
+      }
+   }
+   if(ConfigAdmob.interstitial) {
+      $scope.showInterstitial();
+   }
+});
+         </pre> 
+         Above code will show a banner and Interstitial ad. Remove interstitial or banner id code if you don want to show ads.
+         <br>
+         <b>Example only Banner Ad</b>
+         <pre>
+document.addEventListener("deviceready", function(){
+   if(AdMob) {
+      // show admob banner
+      if(ConfigAdmob.banner) {
+         AdMob.createBanner( {
+            adId: ConfigAdmob.banner, 
+            position: AdMob.AD_POSITION.BOTTOM_CENTER, 
+            autoShow: true 
+         } );
+      }
+   }
+});
+         </pre> 
+         <br>
+         <b>Example Interstitial Ad</b>
+         <pre>
+$scope.showInterstitial = function(){
+   if(AdMob) AdMob.showInterstitial();
+}
+document.addEventListener("deviceready", function(){
+   if(AdMob) {
+      // preparing admob interstitial ad
+      if(ConfigAdmob.interstitial) {
+         AdMob.prepareInterstitial( {
+            adId:ConfigAdmob.interstitial, 
+            autoShow:false
+         } );
+      }
+   }
+   if(ConfigAdmob.interstitial) {
+      $scope.showInterstitial();
+   }
+});
+         </pre> 
+         <br>
+         And also make sure to Inject 'ConfigAdmob' constant when you call these methods.
+      </p>
+      <p>
+      	For more options follow this <a href="https://github.com/floatinghotpot/cordova-admob-pro">admob plugin tutorial</a>.
+      </p>
+      <h3 id="bt4"><strong>Build app</strong> - <a href="#toc">top</a></h3>
+      <p>
+      	After finishing these tasks take a build of your app and install it in your mobile device.
+      </p>
+      <h3 id="bt40"><strong>Important Files and Folders</strong> - <a href="#toc">top</a></h3>
+      	<p>Inside app you can find html files here "www/templates".</p>
+         <p>Inside app you can find js files here "www/js".</p>
+         <p>js/controllers.js -- all controller files in app</p>
+         <p>js/router.js -- routers can be found here</p>
+         <p>js/data.js -- all factories -- functions for accessing data from server</p>
+      <h3 id="bt5"><strong>Important Links</strong> - <a href="#toc">top</a></h3>
+      <ul>
+      	<li><a href="https://ionicframework.com" target="_blank">Ionic</a></li>
+         <li><a href="https://cordova.apache.org" target="_blank">Cordova</a></li>
+         <li><a href="https://cordova.apache.org/docs/en/5.0.0/guide_cli_index.md.html" target="_blank">Cordova Installation Doc</a></li>
+         <li><a href="http://ionicons.com" target="_blank">Ionicos Icons</a></li>
+         <li>Installing splashscreen <a href="https://github.com/apache/cordova-plugin-splashscreen">Splash screen plugin</a></li>
+      </ul>
+      <p>Thanks for using this script.</p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+	  <hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
